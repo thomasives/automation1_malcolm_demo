@@ -1,0 +1,30 @@
+- builtin.parameters.string:
+    name: mri_prefix
+    description: MRI for created block
+
+- builtin.parameters.string:
+    name: pv_prefix
+    description: PV prefix that was used to construct the automation1 controller
+
+- builtin.parameters.string:
+    name: config_dir
+    description: Where to store saved configs
+
+- builtin.controllers.ManagerController:
+    mri: $(mri_prefix)
+    config_dir: $(config_dir)
+
+- automation1.includes.rawmotor_collection:
+    mri: $(mri_prefix):X
+    pv_prefix: $(pv_prefix):M1
+    scannable: stagex
+
+- automation1.includes.rawmotor_collection:
+    mri: $(mri_prefix):Y
+    pv_prefix: $(pv_prefix):M2
+    scannable: stagey
+
+- automation1.includes.auto_trajectory_collection:
+    mri_prefix: $(mri_prefix)
+    pv_prefix: "$(pv_prefix):PM1:"
+

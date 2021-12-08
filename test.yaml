@@ -1,0 +1,21 @@
+- builtin.defines.module_path:
+    name: DEMO
+    path: $(yamldir)
+
+- builtin.defines.string:
+    name: config_dir
+    value: "/tmp/demo_cfg/"
+
+- DEMO.blocks.motion01_block:
+    mri_prefix: MOTION1
+    pv_prefix: TRI:AUTO
+    config_dir: $(config_dir)
+
+- DEMO.blocks.auto_scan_block:
+    mri_prefix: SCAN1
+    config_dir: $(config_dir)
+    initial_design:
+
+# Add a webserver
+- web.blocks.web_server_block:
+    mri: WEB

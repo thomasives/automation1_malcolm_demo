@@ -1,0 +1,22 @@
+- builtin.parameters.string:
+    name: mri_prefix
+    description: MRI for created block
+
+- builtin.parameters.string:
+    name: config_dir
+    description: Where to store saved configs
+
+- builtin.parameters.string:
+    name: initial_design
+    description: Initial design to load for the scan
+
+- scanning.controllers.RunnableController:
+    mri: $(mri_prefix)
+    config_dir: $(config_dir)
+    description: ""
+    initial_design: $(initial_design)
+
+- automation1.parts.AutoChildPart:
+    name: MOTION-01
+    mri: MOTION1
+    initial_visibility: True
